@@ -1,4 +1,4 @@
 parsing
 parseJSON
 	
-	^ STON fromString: response contents
+	^ STON fromString: self rawContents

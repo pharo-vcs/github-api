@@ -1,3 +1,0 @@
-testing
-isPaginated
-	self shouldBeImplemented.
