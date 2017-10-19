@@ -1,0 +1,4 @@
+requests
+url
+
+	self subclassResponsibility

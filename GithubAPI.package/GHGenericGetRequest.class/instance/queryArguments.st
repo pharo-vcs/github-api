@@ -1,0 +1,4 @@
+request
+queryArguments
+	
+	^ Dictionary new
