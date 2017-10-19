@@ -1,4 +1,4 @@
-pull requests
+requests
 getPullRequestsFromRepo: repoNameString owner: ownerNameString 
 	
 	^ self call: (GHGetPullRequests new

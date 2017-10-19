@@ -1,0 +1,13 @@
+{
+	"commentStamp" : "",
+	"super" : "GHGetRequest",
+	"category" : "GithubAPI",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"username"
+	],
+	"name" : "GHGetUserRepositories",
+	"type" : "normal"
+}
