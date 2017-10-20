@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "GuillermoPolito 10/19/2017 20:22",
 	"super" : "Object",
-	"category" : "GithubAPI",
+	"category" : "GithubAPI-Core",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],

@@ -1,7 +1,7 @@
 {
 	"commentStamp" : "",
 	"super" : "GHGetRequest",
-	"category" : "GithubAPI",
+	"category" : "GithubAPI-Requests",
 	"classinstvars" : [ ],
 	"pools" : [ ],
 	"classvars" : [ ],
