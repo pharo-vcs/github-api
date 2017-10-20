@@ -4,6 +4,15 @@ This package implements Github's REST API v3. You can find details on it in here
 
 https://developer.github.com/
 
+## Installation
+
+```smalltalk
+Metacello new
+	repository: 'github://guillep/github-api:v0.1';
+	baseline: 'GithubAPI';
+	load.
+```
+
 ## Setting up a connection and login
 
 A new connection to github can be set up by doing:
