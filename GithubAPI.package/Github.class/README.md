@@ -10,9 +10,17 @@ connection := Github new.
 
 And then specifying a login.
 
+- Anonymous authentication (default if none specified)
+
+connection anonymous.
+
+- User/password authentication
+
 connection loginUser: 'YOUR_USER' password: 'YOUR_PASSWORD'.
 
-For now, I implement only basic authentication. However, login is managed behind by a credentials object, so new kind of credentials can be added later on.
+- Token authentication
+
+connection loginToken: 'YOUR_TOKEN'.
 
 # Making a request
 
