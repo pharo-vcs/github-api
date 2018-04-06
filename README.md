@@ -20,14 +20,23 @@ A new connection to github can be set up by doing:
 ```smalltalk
 connection := Github new.
 ```
+- Anonymous authentication (default if none specified)
 
-And then specifying a login.
+```smalltalk
+connection anonymous.
+```
+
+- User/password authentication
 
 ```smalltalk
 connection loginUser: 'YOUR_USER' password: 'YOUR_PASSWORD'.
 ```
 
-For now, I implement only basic authentication. However, login is managed behind by a credentials object, so new kind of credentials can be added later on.
+- Token authentication
+
+```smalltalk
+connection loginToken: 'YOUR_TOKEN'.
+```
 
 ## Making a request
 
