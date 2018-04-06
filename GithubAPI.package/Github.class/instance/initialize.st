@@ -1,0 +1,4 @@
+call
+initialize
+
+	self anonymous
