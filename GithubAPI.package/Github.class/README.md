@@ -1,10 +1,10 @@
-I am a connection to github,  providing methods to login and call requests on it. I implement behind Github's REST API v3. You can find details on it in here:
+I am a connection to Github, providing methods to login and call requests on it. I am implemented using Github's REST API v3. You can find details on it in here:
 
 https://developer.github.com/
 
 # Setting up a connection and login
 
-A new connection to github can be set up by doing:
+A new connection to Github can be set up by doing:
 
 connection := Github new.
 
@@ -28,7 +28,7 @@ The protocol *requests* contains several already implemented requests such as:
  - get the pull requests of a given project
  - get the issues of a given project
  - get a user
- - get the respositories of a suser
+ - get the repositories of a suser
  - get the organizations of a user
 
 All these request methods answer a GHResponse object. A GHResponse object contains inside the HTTP response plus some handy methods to parse the data and manage pagination. See the comment on GHResponse for more details.
@@ -39,7 +39,7 @@ Moreover, if something fails in the request, and a failed response is obtained, 
 
 # Paginated requests
 
-By default all github requests are paginated with a max page number. For example, at the time of writing this comment, such max number was 30.  To help accessing such paginated data, Github provides some meta-data links to the next, previous, last and first pages. This is specified in the following url:
+By default all github requests are paginated with a max page number. For example, at the time of writing this comment, such max number was 30. To help accessing such paginated data, Github provides some meta-data links to the next, previous, last and first pages. This is specified in the following url:
 
 https://developer.github.com/v3/#pagination
 
