@@ -6,7 +6,8 @@ Class {
 	#superclass : 'Github',
 	#instVars : [
 		'responses',
-		'requests'
+		'requests',
+		'sent'
 	],
 	#category : 'GithubAPI-Tests',
 	#package : 'GithubAPI-Tests'
@@ -35,7 +36,8 @@ GHGithubStub >> initialize [
 
 	super initialize.
 	responses := OrderedCollection new.
-	requests := OrderedCollection new
+	requests := OrderedCollection new.
+	sent := OrderedCollection new
 ]
 
 { #category : 'accessing' }
@@ -51,7 +53,16 @@ GHGithubStub >> responseFor: aRequest ifNoneMatch: anETagOrNil [
 	| client |
 	client := ZnClient new.
 	client url: aRequest url.
-	aRequest setQueryArgumentsToClient: client.
+	aRequest queryArguments keysAndValuesDo: [ :key :value |
+		client queryAt: key put: value ].
 	requests add: client request url -> anETagOrNil.
+	sent add: aRequest.
 	^ responses removeFirst
+]
+
+{ #category : 'accessing' }
+GHGithubStub >> sent [
+	"The request objects, in order"
+
+	^ sent
 ]

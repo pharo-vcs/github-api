@@ -16,6 +16,66 @@ GithubTest >> setUp [
 ]
 
 { #category : 'tests' }
+GithubTest >> testCheckRunsOfACommit [
+
+	| response |
+	github
+		answerJSON:
+		'{"total_count":1,"check_runs":[{"name":"build","status":"completed","conclusion":"success"}]}'
+		headers: { ('ETag' -> 'W/"c1"') } asDictionary.
+	response := github call: (GHGetCheckRuns new
+			             ownerName: 'pharo-vcs';
+			             repositoryName: 'tonel';
+			             ref: 'abc123';
+			             perPage: 100;
+			             yourself).
+	self
+		assert: github requests first key
+		equals:
+			'https://api.github.com/repos/pharo-vcs/tonel/commits/abc123/check-runs?per_page=100'
+				asZnUrl.
+	self
+		assert:
+		((response parseJSON at: 'check_runs') first at: 'conclusion')
+		equals: 'success'.
+	self assert: response etag equals: 'W/"c1"'
+]
+
+{ #category : 'tests' }
+GithubTest >> testCommentAndCloseAnIssue [
+
+	github
+		answer: (ZnResponse statusCode: 201);
+		answer: (ZnResponse statusCode: 200).
+	github call: (GHCreateIssueComment new
+			 ownerName: 'a';
+			 repositoryName: 'b';
+			 number: 7;
+			 text: 'Thanks';
+			 yourself).
+	github call: (GHUpdateIssue new
+			 ownerName: 'a';
+			 repositoryName: 'b';
+			 number: 7;
+			 closeAsNotPlanned;
+			 yourself).
+	self
+		assert: github requests first key
+		equals: 'https://api.github.com/repos/a/b/issues/7/comments' asZnUrl.
+	self assert: github sent first httpMethod equals: #POST.
+	self
+		assert: github sent first body
+		equals: { ('body' -> 'Thanks') } asDictionary.
+	self
+		assert: github requests second key
+		equals: 'https://api.github.com/repos/a/b/issues/7' asZnUrl.
+	self assert: github sent second httpMethod equals: #PATCH.
+	self assert: github sent second body equals: {
+			('state' -> 'closed').
+			('state_reason' -> 'not_planned') } asDictionary
+]
+
+{ #category : 'tests' }
 GithubTest >> testConditionalRequestSendsETagAndAcceptsNotModified [
 
 	| response |
