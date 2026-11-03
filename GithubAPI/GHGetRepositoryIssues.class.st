@@ -6,7 +6,8 @@ Class {
 		'ownerName',
 		'state',
 		'since',
-		'perPage'
+		'perPage',
+		'sort'
 	],
 	#category : 'GithubAPI-Requests',
 	#package : 'GithubAPI',
@@ -31,6 +32,7 @@ GHGetRepositoryIssues >> queryArguments [
 	| arguments |
 	arguments := Dictionary new.
 	state ifNotNil: [ arguments at: 'state' put: state ].
+	sort ifNotNil: [ arguments at: 'sort' put: sort ].
 	since ifNotNil: [
 			arguments
 				at: 'since'
@@ -50,6 +52,13 @@ GHGetRepositoryIssues >> since: aDateAndTime [
 	"Only issues updated at or after aDateAndTime"
 
 	since := aDateAndTime
+]
+
+{ #category : 'accessing' }
+GHGetRepositoryIssues >> sort: aString [
+	"created, updated or comments, always newest first. Sorting by updated makes the first page change whenever any issue changes, so its ETag tells whether anything did."
+
+	sort := aString
 ]
 
 { #category : 'accessing' }
