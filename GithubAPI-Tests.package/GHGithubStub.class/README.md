@@ -1,0 +1,1 @@
+I am a Github connection that answers canned ZnResponses, in order, instead of calling the network. I remember each request URL and the ETag it was sent with.

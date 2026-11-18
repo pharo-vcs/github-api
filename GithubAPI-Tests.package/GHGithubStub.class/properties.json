@@ -1,0 +1,15 @@
+{
+	"commentStamp" : "<historical>",
+	"super" : "Github",
+	"category" : "GithubAPI-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"responses",
+		"requests",
+		"sent"
+	],
+	"name" : "GHGithubStub",
+	"type" : "normal"
+}
